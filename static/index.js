@@ -82,6 +82,10 @@ function drawBoard() {
         context.fillStyle = "lightgray";
         context.fillRect(startingx+j*box, startingy+i*box, box, box); 
       } else if (plantArray[i][j].state == 2) {
+        if ([177,180,199,201,202,206,211,217].includes(plantArray[i][j].plantID)) {
+          context.fillStyle = "green";
+          context.fillRect(startingx+j*box, startingy+i*box, box, box);  
+        }
         const img = new Image();
         // Set the source of the image (replace 'path/to/image.jpg' with your image URL)
         let url = 'https://storage.googleapis.com/myhomepark-images/' + plantArray[i][j].plantID.toString() + '.png';
@@ -861,7 +865,7 @@ document.getElementById("closePopupButton").addEventListener("click", function (
 });
 
 
-//ADD IN EXTRA PLANTS
+//#####ADD IN EXTRA PLANTS
 //CONSIDER ADDING A SEARCH IN CASE THEY ARE NOT 
 //Look into the algorithm because the same plants appear to be coming up
 //SUN shouldn't be able to be in the wrong one

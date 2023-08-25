@@ -107,7 +107,12 @@
    </table>
    <!-- This is What I added -->
    <div id="plantIdPopup" style="display: none;">
-    <button id="closePopupButton">X</button>
+    <div>
+      <button id="closePopupButton">X</button>
+      <input type="text" id="plantSearch" placeholder="Search plant by name">
+      <button id="searchButton">Search</button>
+      <span id="searchError" style="color: red;"></span>
+    </div>
     <div id="plantOptions">
       <!-- Empty div for dynamically generated plant options -->
     </div>
