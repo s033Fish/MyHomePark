@@ -127,7 +127,7 @@ def insert_image():
   for row in range(num_rows):
     for col in range(num_cols):
       plant_id = plant_array[row][col]
-      if plant_id == -1: # no plant
+      if plant_id <= 0: # no plant
         break
       # create plant url from plant id
       image_url = 'https://storage.googleapis.com/myhomepark-images/' + str(plant_id) + '.png'
@@ -220,12 +220,12 @@ def queryDatabase(colors, color_names, sunlevel, maxHeight, soilTypes, state):
           heightScore = 1
         else: 
           heightScore = 0
-          print("Set to Zero")
-        print("MAXHEIGHT24   plant ", value['id'], "   hmax=", value['hmax'], "   heightScore=", heightScore)
+          # print("Set to Zero")
+        # print("MAXHEIGHT24   plant ", value['id'], "   hmax=", value['hmax'], "   heightScore=", heightScore)
 
       else:
         heightScore = 1 - abs(maxHeight-int(value['hmax']))/100
-        print("MAXHEIGHT NOT24   plant ", value['id'], "   hmax=", value['hmax'], "   heightScore=", heightScore)
+        # print("MAXHEIGHT NOT24   plant ", value['id'], "   hmax=", value['hmax'], "   heightScore=", heightScore)
 
       
       #soilTypes == gravel, sand, loam, clay
