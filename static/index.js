@@ -83,7 +83,7 @@ function drawBoard() {
         context.fillRect(startingx+j*box, startingy+i*box, box, box); 
       } else if (plantArray[i][j].state == 2) {
         if ([177,180,199,201,202,206,211,217].includes(plantArray[i][j].plantID)) {
-          context.fillStyle = "green";
+          context.fillStyle = "lightgreen";
           context.fillRect(startingx+j*box, startingy+i*box, box, box);  
         }
         const img = new Image();
@@ -312,18 +312,21 @@ function plot() {
   plotSelect = true;
   groundSelect = false;
   plantSelect = false;
+  drId++;
 }
 
 function ground() {
   plotSelect = false;
   groundSelect = true;
   plantSelect = false;
+  drId++;
 }
 
 function plant() {
   plotSelect = false;
   groundSelect = false;
   plantSelect = true;
+  drId++;
 }
 
 
@@ -874,7 +877,7 @@ document.getElementById("closePopupButton").addEventListener("click", function (
 //#####always on the screen for the popup
 //#####add in functionality for switching between plants and ground cover and xed out squares
 //#####add in functionality for the reset button
-//figure out why it is changing both
+//figure out why it is changing both (need to add to drift id everytime it switches
 //ground cover make the squares behind it light green (mint)
 //prioritize not snapping to the plot but adding the pictures
 //troubleshooting to make sure the form doesn't break
