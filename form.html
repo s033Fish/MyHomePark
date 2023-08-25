@@ -1,0 +1,88 @@
+<!doctype html>
+
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.css">
+  <link rel="stylesheet" type="text/css" href="static/main.css">
+</head>
+<body>
+      <h2>Customer Specifications</h2>
+
+      <form id="myForm" action="/submit" method="POST">
+         <input type="checkbox" id="purple" name="purple" value="purple">
+         <label for="purple">purple</label><br>
+         <input type="checkbox" id="red" name="red" value="red">
+         <label for="red">red</label><br>
+         <input type="checkbox" id="blue" name="blue" value="blue">
+         <label for="blue">blue</label><br>
+         <input type="checkbox" id="green" name="green" value="green">
+         <label for="green">green</label><br>
+         <input type="checkbox" id="white" name="white" value="white">
+         <label for="white">white</label><br>
+         <input type="checkbox" id="lavender" name="lavender" value="lavender">
+         <label for="lavender">lavender</label><br>
+         <input type="checkbox" id="yellow" name="yellow" value="yellow">
+         <label for="yellow">yellow</label><br>
+         <input type="checkbox" id="pink" name="pink" value="pink">
+         <label for="pink">pink</label><br>
+         <input type="checkbox" id="violet" name="violet" value="violet">
+         <label for="violet">violet</label><br>
+         <input type="checkbox" id="orange" name="orange" value="orange">
+         <label for="orange">orange</label><br>
+         <input type="checkbox" id="cream" name="cream" value="cream">
+         <label for="cream">cream</label><br>
+         <input type="checkbox" id="fusia" name="fusia" value="fusia">
+         <label for="fusia">fusia</label><br>
+
+         <p></p>
+
+         <input type="checkbox" id="gravel" name="gravel" value="gravel">
+         <label for="gravel">gravel</label><br>
+         <input type="checkbox" id="sand" name="sand" value="sand">
+         <label for="sand">sand</label><br>
+         <input type="checkbox" id="loam" name="loam" value="loam">
+         <label for="loam">loam</label><br>
+         <input type="checkbox" id="clay" name="clay" value="clay">
+         <label for="clay">clay</label><br>
+
+         <p></p>
+
+         <label for="width">Width:</label><br>
+         <input type="text" id="width" name="width"><br>
+         <label for="length">Length:</label><br>
+         <input type="text" id="length" name="length">
+
+         <p></p>
+
+         <input type="radio" id="fullSun" name="sunlight" value="fullSun">
+         <label for="fullSun">Full Sun</label><br>
+         <input type="radio" id="partSun" name="sunlight" value="partSun">
+         <label for="partSun">Partial Sunlight</label><br>
+         <input type="radio" id="fullShade" name="sunlight" value="fullShade">
+         <label for="fullShade">Full Shade</label><br>
+
+         <p></p>
+
+         <label for="zipcode">Zipcode:</label><br>
+         <input type="text" id="zipcode" name="zipcode"><br>
+
+         <p></p>
+
+         <label for="height">Max Height (in):</label><br>
+         <input type="text" id="height" name="height"><br>
+
+         <p></p>
+
+         <p>Plot Image</p>
+         <input type="file" id="plot" name="plot">
+ 
+         <p></p>
+
+         <input type="submit" value="Submit">
+      </form>
+  </body>
+</html>

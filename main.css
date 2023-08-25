@@ -1,0 +1,64 @@
+/* main.css */
+
+/* Apply a soft nature-themed background color */
+body {
+  background-color: #f4f9e9;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Center the form on the page */
+#myForm {
+  width: 50%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the form headings */
+h2 {
+  text-align: center;
+  color: #235a32;
+}
+
+/* Style the form labels and checkboxes */
+label {
+  color: #235a32;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+/* Style the form text inputs */
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+/* Style the form radio buttons */
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Style the submit button */
+input[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #235a32;
+  color: #ffffff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+  background-color: #184326;
+}

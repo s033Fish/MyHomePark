@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.css">
+  <link rel="stylesheet" type="text/css" href="static/style.css">
+  <script src="static/disappear.js"></script>
+  <head>
+  <style>
+    #plantIdPopup {
+      display: none;
+      position: absolute;
+      background-color: white;
+      border: 1px solid gray;
+      padding: 10px;
+    }
+    
+    #plantOptions {
+      margin-top: 10px; /* Add some space between options and other content */
+    }
+
+    .plant-option {
+      cursor: pointer;
+      padding: 8px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+      margin-bottom: 5px;
+    }
+
+    .plant-option:hover {
+      background-color: #e0e0e0;
+    }
+    .legend-container {
+      border: 1px solid #ccc;
+      padding: 10px;
+      max-width: 300px;
+      background-color: #f8f8f8;
+    }
+
+    /* Style for each plant entry in the legend */
+    .plant-entry {
+      display: flex;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .plant-image {
+      width: 30px; /* Adjust as needed */
+      height: 30px; /* Adjust as needed */
+      margin-right: 10px;
+    }
+
+    .plant-info {
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+</head>
+<body>
+   <table>
+      <tr>
+         <td>
+            <div>
+               <canvas id="canvas" width=500 height=500</canvas>
+            </div>
+         </td>
+         <td>
+            <div>
+               <input type="radio" onclick="plot()" id="plotButton" name="selection" value="plotButton">
+               <label for="plotButton">Plot</label><br>
+               <input type="radio" onclick="ground()" id="groundButton" name="selection" value="groundButton">
+               <label for="groundButton">Ground Cover</label><br>
+               <input type="radio" onclick="plant()" id="plantButton" name="selection" value="plantButton">
+               <label for="plantButton">Plant Drifts</label><br> 
+            </div>
+            <div>
+               <div id="resetbutton">
+                  <center>
+                     <button onclick="reset()">Reset Grid</button>
+                  </center>
+               </div>
+<!--
+               <div id="lockbutton">
+                  <center>
+                     <button onclick="lock()">Lock Grid</button>
+                  </center>
+               </div>
+-->
+               </div>
+               <div id="driftbutton">
+                  <center>
+                     <button onclick="newDrift()">Next Drift</button>
+                  </center>
+               </div>
+               <div id="streetButton">
+                  <center>
+                     <button onclick="createStreetView()">Finish Plot</button>
+                  </center>
+               </div>
+            </div>
+         </td>
+      </tr>
+   </table>
+   <!-- This is What I added -->
+   <div id="plantIdPopup" style="display: none;">
+    <button id="closePopupButton">X</button>
+    <div id="plantOptions">
+      <!-- Empty div for dynamically generated plant options -->
+    </div>
+  </div>
+  <div id="legend" class="legend-container">
+    <!-- Your legend content will be added here dynamically -->
+  </div>
+  <!-- <script src="https://apis.google.com/js/api.js"></script> -->
+  <script src="https://accounts.google.com/gsi/client"></script>
+
+<!--
+   <img src="https://storage.googleapis.com/myhomepark-images/Black-Eyed%20Susan.png" alt="black-eyed susan" width="75" height="75">
+-->
+<!--
+      <h1>Plants:</h1>
+      <ul>
+         {% for item in plants %}
+            <li>{{ item }}</li>
+         {% endfor %}
+      </ul>
+-->
+      <script>
+         var width = {{ width }};
+         var length = {{ length }};
+         var maxHeight = {{ maxHeight }};
+         var sunlevel = "{{ sunlevel }}";
+         var input_colors = {{ input_colors }};
+         var soilTypes = {{ soilTypes }};
+         var zipCode = "{{ zipCode }}";
+         console.log("Sunlevel = ", sunlevel);
+         console.log("Height = ", maxHeight);
+         console.log("WIDTH = ", width);
+         console.log("LENGHT = ", length);
+      </script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="static/index.js"></script>
+  </body>
+</html>
