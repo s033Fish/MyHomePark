@@ -181,7 +181,6 @@ def queryDatabase(colors, color_names, sunlevel, maxHeight, soilTypes, state):
     highScorePlants = []
     colorWeight = 2   
     sunWeight = 3
-    print("Changed the sun to 3")
     heightWeight = 3
     soilWeight = 2
     nativeWeight = 4
@@ -249,7 +248,8 @@ def queryDatabase(colors, color_names, sunlevel, maxHeight, soilTypes, state):
       # ADD IN NATIVE SCORING START WITH WEIGHT OF 4 START WITH DATA AS IS
       # DISPLAY NATIVE OR NOT IN THE SELECTION
       print("plantID=", value['id'], "    currentScore=", currentScore, "    color score=", colorScore*colorWeight, "      sun score=", sunScore*sunWeight, "       height score=", heightScore*heightWeight)
-      
+     
+      currentScore = colorScore*colorWeight + sunScore*sunWeight + heightScore*heightWeight + soilScore*soilWeight + nativeScore*nativeWeight
       if (currentScore > highScore):
         highScore = currentScore
         print("highPlantID=",highPlantID, " new highPlantID=", value['id'])
