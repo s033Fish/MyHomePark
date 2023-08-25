@@ -127,6 +127,8 @@ def insert_image():
   for row in range(num_rows):
     for col in range(num_cols):
       plant_id = plant_array[row][col]
+      if plant_id == -1: # no plant
+        break
       # create plant url from plant id
       image_url = 'https://storage.googleapis.com/myhomepark-images/' + str(plant_id) + '.png'
       image_id = str(plant_id) + '_image_' + str(random.randint(0, 1000000))
@@ -172,6 +174,9 @@ def insert_image():
 
 def queryDatabase(colors, color_names, sunlevel, maxHeight, soilTypes, state):
     print("Started Function")
+    print("Colors:", colors)
+    print("Color Names:", color_names)
+
     ref = db.reference("/") 
     highScorePlants = []
     colorWeight = 2   
