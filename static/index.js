@@ -914,7 +914,7 @@ document.getElementById("searchButton").addeventListener("click", function () {
     const searchInput = document.getElementById("plantSearch");
     const searchError = document.getElementById("searchError");
     performPlantSearch(searchInput.value);
-}
+});
 
 
 //#####ADD IN EXTRA PLANTS
