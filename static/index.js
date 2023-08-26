@@ -312,21 +312,21 @@ function plot() {
   plotSelect = true;
   groundSelect = false;
   plantSelect = false;
-  drID++;
+  drId++;
 }
 
 function ground() {
   plotSelect = false;
   groundSelect = true;
   plantSelect = false;
-  drID++;
+  drId++;
 }
 
 function plant() {
   plotSelect = false;
   groundSelect = false;
   plantSelect = true;
-  drID++;
+  drId++;
 }
 
 
@@ -859,6 +859,48 @@ function createStreetView() {
 }
 
 
+
+function performPlantSearch(searchText) {
+  // Reset search error message
+  const searchError = document.getElementById("searchError");
+  searchError.textContent = "";
+
+  // Call Python function to search the database
+  fetch('/search_plant', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      search: searchText
+    })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      // Update the ID of the plants in the current drift with the returned plant ID
+      const matchingPlantID = data.plantID;
+      for (let i = 0; i < userwidth; i++) {
+        for (let j = 0; j < userlength; j++) {
+          if (plantArray[i][j].driftID === plantArray[clickedPlantRow][clickedPlantCol].driftID) {
+            plantArray[i][j].plantID = matchingPlantID;
+          }
+        }
+      }
+      drawBoard();
+      hidePopup();
+      yourPlantArray = [];
+    } else {
+      searchError.textContent = "No matching plant found.";
+    }
+  })
+  .catch(error => console.error('Error:', error));
+}
+
+
+
+
+
 drawBoard();
 
 canvas.addEventListener("click", drawRectangle);
@@ -866,6 +908,12 @@ canvas.addEventListener("click", drawRectangle);
 document.getElementById("closePopupButton").addEventListener("click", function () {
   hidePopup();
 });
+
+document.getElementById("searchButton").addeventListener("click", function () {
+    const searchInput = document.getElementById("plantSearch");
+    const searchError = document.getElementById("searchError");
+    performPlantSearch(searchInput.value);
+}
 
 
 //#####ADD IN EXTRA PLANTS

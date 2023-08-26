@@ -64,6 +64,30 @@ def submit():
 
     return render_template('grid.html', input_colors=input_colors, soilTypes=soilTypes, width=width, length=length, sunlevel=sunlevel, zipCode=zipCode, maxHeight=maxHeight)
 
+
+
+@app.route('/search_plant', methods=['POST'])
+def search_plant():
+    data = request.get_json()
+    search_text = data.get('search', '')
+    found = False
+    plant_id = -1
+
+    query = ref.order_by_child('purple').start_at(0).end_at(1)
+    snapshot = query.get()
+    for key, value in snapshot.items():
+      if (value[commonnamex] == search_text):
+        found = True
+        plant_id = value['id']
+
+    response_data = {
+        'success': found,
+        'plantID': plant_id
+    }
+    return jsonify(response_data)
+
+
+
 @app.route('/query_database', methods=['POST'])
 def query_database():
   try:
@@ -127,7 +151,7 @@ def insert_image():
   for row in range(num_rows):
     for col in range(num_cols):
       plant_id = plant_array[row][col]
-      if plant_id <= 0: # no plant
+      if plant_id == -1: # no plant
         break
       # create plant url from plant id
       image_url = 'https://storage.googleapis.com/myhomepark-images/' + str(plant_id) + '.png'
@@ -181,7 +205,8 @@ def queryDatabase(colors, color_names, sunlevel, maxHeight, soilTypes, state):
     highScorePlants = []
     colorWeight = 2   
     sunWeight = 3
-    heightWeight = 2
+    print("Changed the sun to 3")
+    heightWeight = 3
     soilWeight = 2
     nativeWeight = 4
     plants = []
@@ -220,12 +245,12 @@ def queryDatabase(colors, color_names, sunlevel, maxHeight, soilTypes, state):
           heightScore = 1
         else: 
           heightScore = 0
-          # print("Set to Zero")
-        # print("MAXHEIGHT24   plant ", value['id'], "   hmax=", value['hmax'], "   heightScore=", heightScore)
+          print("Set to Zero")
+        print("MAXHEIGHT24   plant ", value['id'], "   hmax=", value['hmax'], "   heightScore=", heightScore)
 
       else:
         heightScore = 1 - abs(maxHeight-int(value['hmax']))/100
-        # print("MAXHEIGHT NOT24   plant ", value['id'], "   hmax=", value['hmax'], "   heightScore=", heightScore)
+        print("MAXHEIGHT NOT24   plant ", value['id'], "   hmax=", value['hmax'], "   heightScore=", heightScore)
 
       
       #soilTypes == gravel, sand, loam, clay
@@ -234,19 +259,21 @@ def queryDatabase(colors, color_names, sunlevel, maxHeight, soilTypes, state):
       else:
         soilScore = 0
       
-      
+      '''
+      print("trying state")
       try:
           if (value[state] == "Native"):
-            # print(value['id'], "set to 1 for", state)
+            print(value['id'], "set to 1 for", state)
             nativeScore = 1
-      except Exception as e:
+      except ValueError as e:
           nativeScore = 0
-          # print(value['id'], "set to 0 for", state)
+          print(value['id'], "set to 0 for", state)
+      '''
       
-      currentScore = colorScore*colorWeight + sunScore*sunWeight + heightScore*heightWeight + soilScore*soilWeight + nativeScore*nativeWeight
-
-      print("plantID=", value['id'], "currentScore=", round(currentScore,2), " color=", colorScore*colorWeight, " sun=", sunScore*sunWeight, " height=", round(heightScore*heightWeight,2), " native=", nativeScore*nativeWeight)
-
+      # ADD IN NATIVE SCORING START WITH WEIGHT OF 4 START WITH DATA AS IS
+      # DISPLAY NATIVE OR NOT IN THE SELECTION
+      print("plantID=", value['id'], "    currentScore=", currentScore, "    color score=", colorScore*colorWeight, "      sun score=", sunScore*sunWeight, "       height score=", heightScore*heightWeight)
+      
       if (currentScore > highScore):
         highScore = currentScore
         print("highPlantID=",highPlantID, " new highPlantID=", value['id'])
@@ -258,8 +285,7 @@ def queryDatabase(colors, color_names, sunlevel, maxHeight, soilTypes, state):
         highScorePlants.sort(key=lambda x: x['score'], reverse=True)
         if len(highScorePlants) > 15:
           highScorePlants.pop()
-    for x in range(len(highScorePlants)):
-      print("plantID=", highScorePlants[x]['id'], "    score=", highScorePlants[x]['score'])
+    print("Final Suggestion:    ", highScorePlants)
     return highScorePlants
 
 @app.errorhandler(500)
