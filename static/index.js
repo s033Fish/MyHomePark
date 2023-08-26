@@ -882,6 +882,7 @@ function performPlantSearch(searchText) {
   .then(data => {
     if (data.success) {
       // Update the ID of the plants in the current drift with the returned plant ID
+      /*
       const matchingPlantID = data.plantID;
       for (let i = 0; i < userwidth; i++) {
         for (let j = 0; j < userlength; j++) {
@@ -893,6 +894,10 @@ function performPlantSearch(searchText) {
       drawBoard();
       hidePopup();
       yourPlantArray = [];
+      */
+      yourPlantArray = data.results;
+      showPopup();
+      console.log("changes");
     } else {
       searchError.textContent = "No matching plant found.";
     }

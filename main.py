@@ -74,17 +74,18 @@ def search_plant():
     search_text = data.get('search', '')
     found = False
     plant_id = -1
+    results =[]
 
     query = ref.order_by_child('purple').start_at(0).end_at(1)
     snapshot = query.get()
     for key, value in snapshot.items():
-      if (value['commonnamex'] == search_text):
+      if (search_text in value['commonnamex']):
         found = True
-        plant_id = value['id']
+        results.append({'id': value['id'], 'data': value})
 
     response_data = {
         'success': found,
-        'plantID': plant_id
+        'results': results
     }
     return jsonify(response_data)
 
