@@ -68,6 +68,8 @@ def submit():
 
 @app.route('/search_plant', methods=['POST'])
 def search_plant():
+    print("added red")
+    ref = db.reference("/") 
     data = request.get_json()
     search_text = data.get('search', '')
     found = False
@@ -76,7 +78,7 @@ def search_plant():
     query = ref.order_by_child('purple').start_at(0).end_at(1)
     snapshot = query.get()
     for key, value in snapshot.items():
-      if (value[commonnamex] == search_text):
+      if (value['commonnamex'] == search_text):
         found = True
         plant_id = value['id']
 
