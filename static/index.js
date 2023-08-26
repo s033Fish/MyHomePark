@@ -282,6 +282,7 @@ function newDrift() {
          }
       }
       printArray(plantArray);
+      drawBoard(); // added to update the UI MTF
     })
     .catch(error => console.error('Error:', error));
   }

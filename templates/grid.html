@@ -7,7 +7,6 @@
   <script src="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.js"></script>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.5.0/firebase-ui-auth.css">
   <script src="static/disappear.js"></script>
-  <head>
   <style>
     #plantIdPopup {
       display: none;
@@ -58,18 +57,17 @@
     }
   </style>
 </head>
-</head>
 <body>
    <table>
       <tr>
          <td>
             <div>
-               <canvas id="canvas" width=500 height=500</canvas>
+               <canvas id="canvas" width=500 height=500></canvas>
             </div>
          </td>
          <td>
             <div>
-               <input type="radio" onclick="plot()" id="plotButton" name="selection" value="plotButton">
+               <input type="radio" onclick="plot()" id="plotButton" name="selection" value="plotButton" checked>
                <label for="plotButton">Plot</label><br>
                <input type="radio" onclick="ground()" id="groundButton" name="selection" value="groundButton">
                <label for="groundButton">Ground Cover</label><br>
