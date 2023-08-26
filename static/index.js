@@ -910,7 +910,7 @@ document.getElementById("closePopupButton").addEventListener("click", function (
   hidePopup();
 });
 
-document.getElementById("searchButton").addeventListener("click", function () {
+document.getElementById("searchButton").addEventListener("click", function () {
     const searchInput = document.getElementById("plantSearch");
     const searchError = document.getElementById("searchError");
     performPlantSearch(searchInput.value);
