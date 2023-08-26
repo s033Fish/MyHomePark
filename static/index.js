@@ -870,15 +870,15 @@ document.getElementById("closePopupButton").addEventListener("click", function (
 
 //#####ADD IN EXTRA PLANTS
 //CONSIDER ADDING A SEARCH IN CASE THEY ARE NOT 
-//Look into the algorithm because the same plants appear to be coming up
-//SUN shouldn't be able to be in the wrong one
+//#####Look into the algorithm because the same plants appear to be coming up
+//#####SUN shouldn't be able to be in the wrong one
 //#####Add a close button
 //#####add some randomness 
 //#####always on the screen for the popup
 //#####add in functionality for switching between plants and ground cover and xed out squares
 //#####add in functionality for the reset button
 //figure out why it is changing both (need to add to drift id everytime it switches
-//ground cover make the squares behind it light green (mint)
+//#####ground cover make the squares behind it light green (mint)
 //prioritize not snapping to the plot but adding the pictures
 //troubleshooting to make sure the form doesn't break
 //make videos showing how to change stuff
