@@ -258,7 +258,8 @@ def queryDatabase(colors, color_names, sunlevel, maxHeight, soilTypes, state):
         highScorePlants.sort(key=lambda x: x['score'], reverse=True)
         if len(highScorePlants) > 15:
           highScorePlants.pop()
-    print("Final Suggestion:    ", highScorePlants['id'], "    score=", highScorePlants['score'])
+    for x in range(len(highScorePlants)):
+      print("plantID=", highScorePlants[x]['id'], "    score=", highScorePlants[x]['score'])
     return highScorePlants
 
 @app.errorhandler(500)
