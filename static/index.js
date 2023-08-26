@@ -866,6 +866,8 @@ function performPlantSearch(searchText) {
   const searchError = document.getElementById("searchError");
   searchError.textContent = "";
 
+  console.log(searchText);
+
   // Call Python function to search the database
   fetch('/search_plant', {
     method: 'POST',
@@ -926,12 +928,12 @@ document.getElementById("searchButton").addEventListener("click", function () {
 //#####always on the screen for the popup
 //#####add in functionality for switching between plants and ground cover and xed out squares
 //#####add in functionality for the reset button
-//figure out why it is changing both (need to add to drift id everytime it switches
+//#####figure out why it is changing both (need to add to drift id everytime it switches
 //#####ground cover make the squares behind it light green (mint)
 //prioritize not snapping to the plot but adding the pictures
 //troubleshooting to make sure the form doesn't break
 //make videos showing how to change stuff
-
+//Add CSS
 
 //Nice to Have:
 //search for a plant automatically
