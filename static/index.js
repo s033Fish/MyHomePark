@@ -302,7 +302,7 @@ function printArray(array) {
   for (let i = 0; i < userwidth; i++) {
     str = ""
     for (let j = 0; j < userlength; j++) {
-      str += plantArray[i][j].plantID + " ";
+      str += plantArray[i][j].driftId + " ";
     }
     console.log(str);
   }
