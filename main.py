@@ -235,19 +235,14 @@ def queryDatabase(colors, color_names, sunlevel, maxHeight, soilTypes, state):
         soilScore = 0
       
       
-      # print("trying state", value[state])
       try:
-          print("inside try state statement")
           if (value[state] == "Native"):
-            print(value['id'], "set to 1 for", state)
+            # print(value['id'], "set to 1 for", state)
             nativeScore = 1
       except Exception as e:
           nativeScore = 0
-          print(value['id'], "set to 0 for", state)
+          # print(value['id'], "set to 0 for", state)
       
-      # ADD IN NATIVE SCORING START WITH WEIGHT OF 4 START WITH DATA AS IS
-      # DISPLAY NATIVE OR NOT IN THE SELECTION
-     
       currentScore = colorScore*colorWeight + sunScore*sunWeight + heightScore*heightWeight + soilScore*soilWeight + nativeScore*nativeWeight
 
       print("plantID=", value['id'], "    currentScore=", currentScore, "    color score=", colorScore*colorWeight, "      sun score=", sunScore*sunWeight, "       height score=", heightScore*heightWeight)
@@ -263,7 +258,7 @@ def queryDatabase(colors, color_names, sunlevel, maxHeight, soilTypes, state):
         highScorePlants.sort(key=lambda x: x['score'], reverse=True)
         if len(highScorePlants) > 15:
           highScorePlants.pop()
-    print("Final Suggestion:    ", highScorePlants)
+    print("Final Suggestion:    ", highScorePlants['id'], "    score=", highScorePlants['score'])
     return highScorePlants
 
 @app.errorhandler(500)
