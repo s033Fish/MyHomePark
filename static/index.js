@@ -217,7 +217,6 @@ function lock() {
 
 function newDrift() {
   drID = drID + 1;
-  drawBoard(); //redraw the board to show the plants
   if (plantSelect) {
     //implement query right here
     var avg = 0;
@@ -283,6 +282,7 @@ function newDrift() {
          }
       }
       printArray(plantArray);
+      drawBoard(); // added to update the UI MTF
     })
     .catch(error => console.error('Error:', error));
   }
