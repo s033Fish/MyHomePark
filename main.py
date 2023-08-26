@@ -245,7 +245,7 @@ def queryDatabase(colors, color_names, sunlevel, maxHeight, soilTypes, state):
       
       currentScore = colorScore*colorWeight + sunScore*sunWeight + heightScore*heightWeight + soilScore*soilWeight + nativeScore*nativeWeight
 
-  print("plantID=", value['id'], "currentScore=", currentScore, " color=", colorScore*colorWeight, " sun=", sunScore*sunWeight, " height=", heightScore*heightWeight, " native=", nativeScore*nativeWeight)
+      print("plantID=", value['id'], "currentScore=", currentScore, " color=", colorScore*colorWeight, " sun=", sunScore*sunWeight, " height=", heightScore*heightWeight, " native=", nativeScore*nativeWeight)
 
       if (currentScore > highScore):
         highScore = currentScore
