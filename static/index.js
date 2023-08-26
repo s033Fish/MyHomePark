@@ -312,21 +312,21 @@ function plot() {
   plotSelect = true;
   groundSelect = false;
   plantSelect = false;
-  drId++;
+  drID++;
 }
 
 function ground() {
   plotSelect = false;
   groundSelect = true;
   plantSelect = false;
-  drId++;
+  drID++;
 }
 
 function plant() {
   plotSelect = false;
   groundSelect = false;
   plantSelect = true;
-  drId++;
+  drID++;
 }
 
 
