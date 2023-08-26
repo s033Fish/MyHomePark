@@ -217,6 +217,7 @@ function lock() {
 
 function newDrift() {
   drID = drID + 1;
+  drawBoard(); //redraw the board to show the plants
   if (plantSelect) {
     //implement query right here
     var avg = 0;
