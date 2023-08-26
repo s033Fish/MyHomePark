@@ -517,7 +517,7 @@ function hidePopup() {
 
 function updateLegend() {
   const legendContainer = document.getElementById("legend");
-  //legendContainer.innerHTML = ""; // Clear existing content
+  legendContainer.innerHTML = ""; // Clear existing content
 
   // Create a map to store plant ID occurrences
   const plantCounts = new Map();
