@@ -235,9 +235,9 @@ def queryDatabase(colors, color_names, sunlevel, maxHeight, soilTypes, state):
         soilScore = 0
       
       
-      print("trying state", value['state'])
+      print("trying state", value[state])
       try:
-          if (value['state'] == "Native"):
+          if (value[state] == "Native"):
             print(value['id'], "set to 1 for", state)
             nativeScore = 1
       except ValueError as e:
