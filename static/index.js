@@ -286,6 +286,22 @@ function newDrift() {
             }
          }
       }
+      // test code
+      formattedData = [];
+
+      for (let i = 0; i < data.results.length; i++) {
+        let plant = {
+           "plantID": data.results[i].id,
+           "name": data.results[i].data.commonnamex,
+           "color": data.results[i].data.color,
+           "height": data.results[i].data.hmax,
+        }
+        formattedData.push(plant);
+      }
+
+      yourPlantArray = formattedData;
+
+      // end test code
       printArray(plantArray);
       drawBoard(); // added to update the UI MTF
     })
@@ -301,6 +317,7 @@ function newDrift() {
       }
     }
   }
+  updateLegend(); // trying to update the legend MTF
 }
 
 
