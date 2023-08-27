@@ -63,7 +63,6 @@ var context = canvas.getContext("2d");
 function drawBoard() {
   context.clearRect(0, 0, canvas.width, canvas.height);
   updateLegend();
-  //createSlide();
   var centerX = canvas.width / 2 - bw / 2;
   startingx = 10;
   startingy = 10;
@@ -122,8 +121,6 @@ function drawBoard() {
         context.lineWidth = 1;
 
         //ADD IN A BLACK RING AROUND THE PLANTS
-        //context.fillStyle = "pink";
-        //context.fillRect(startingx+j*box, startingy+i*box, box, box); 
       } else if (plantArray[i][j].plantID != -1) {
         context.strokeRect(startingx+j*box, startingy+i*box, box, box); 
       } else {
@@ -280,14 +277,12 @@ function newDrift() {
       for (let i = 0; i < userwidth; i++) {
          for (let j = 0; j < userlength; j++) {
             if (plantArray[i][j].driftID == drID-1) {
-               //error here
                plantArray[i][j].plantID = parseInt(data.plants[num].id);
-               //plantArray[i][j].plantID = 10; 
             }
          }
       }
       printArray(plantArray);
-      drawBoard(); // added to update the UI MTF
+      drawBoard(); // added to update the UI 
     })
     .catch(error => console.error('Error:', error));
   }
@@ -303,7 +298,7 @@ function newDrift() {
   }
   */
 
-  updateLegend(); // trying to update the legend MTF
+  updateLegend(); // update the legend 
 }
 
 
