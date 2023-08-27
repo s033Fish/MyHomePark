@@ -505,13 +505,13 @@ document.getElementById("plantOptions").addEventListener("click", function (even
     }
     drawBoard();
     hidePopup();
-    yourPlantArray = [];
+    // yourPlantArray = []; 
   }
 });
 
 function hidePopup() {
   const popup = document.getElementById("plantIdPopup");
-  yourPlantArray = [];
+  // yourPlantArray = [];
   popup.style.display = "none";
   popupVisible = false;
   printArray(plantArray);
@@ -524,6 +524,11 @@ function hidePopup() {
 
 
 function updateLegend() {
+  if (yourPlantArray.length === 0) {
+    console.log("The yourPlantArray is empty.");
+    return;
+  }
+
   const legendContainer = document.getElementById("legend");
   legendContainer.innerHTML = ""; // Clear existing content
 
@@ -568,94 +573,6 @@ function updateLegend() {
     legendContainer.appendChild(entry);
   });
 }
-
-/*
-
-
-function createSlide() {
-gapi.load('client:auth2', () => {
-  gapi.client.init({
-    apiKey: 'AIzaSyCDY2KWjHpM5-ax9IkWOWSni_A9pKc4Rfs',
-    clientId: '1008551812750-kjmgk3pr7g31v9lfhg5dmghrh622q0ma.apps.googleusercontent.com',
-    discoveryDocs: ["https://slides.googleapis.com/$discovery/rest?version=v1"],
-    scope: 'https://www.googleapis.com/auth/presentations'
-  }).then(() => {
-    // Authenticate and load the API
-    return gapi.auth2.getAuthInstance().signIn();
-  }).then(() => {
-    // Create a new slide and insert an image
-    const presentationId = '1OFrFV9Xd-KCVJvE6fHe_x55ynScja17HSWQqzdoC5gQ';
-    const imageUrl = 'https://storage.googleapis.com/myhomepark-images/10.png'; // URL of the image
-
-    gapi.client.slides.presentations.create({
-      title: 'New Presentation'
-    }).then((response) => {
-      const newPresentationId = response.result.presentationId;
-
-      gapi.client.slides.presentations.pages.create({
-        presentationId: newPresentationId
-      }).then((response) => {
-        const newSlideId = response.result.objectId;
-
-        gapi.client.slides.presentations.pages.get({
-          presentationId: newPresentationId,
-          pageObjectId: newSlideId
-        }).then((response) => {
-          const pageElements = response.result.pageElements;
-
-          // Add the image to the new slide's page elements
-          pageElements.push({
-            image: {
-              sourceUrl: imageUrl,
-              contentUrl: imageUrl,
-              size: {
-                width: {
-                  magnitude: 100,
-                  unit: 'PT'
-                },
-                height: {
-                  magnitude: 100,
-                  unit: 'PT'
-                }
-              }
-            },
-            size: {
-              width: {
-                magnitude: 100,
-                unit: 'PT'
-              },
-              height: {
-                magnitude: 100,
-                unit: 'PT'
-              }
-            },
-            transform: {
-              scaleX: 1,
-              scaleY: 1,
-              translateX: 100,
-              translateY: 100,
-              unit: 'PT'
-            }
-          });
-
-          // Update the new slide's page elements with the new image
-          gapi.client.slides.presentations.pages.update({
-            presentationId: newPresentationId,
-            pageObjectId: newSlideId,
-            requestBody: {
-              pageElements: pageElements
-            }
-          }).then(() => {
-            console.log('New slide with image created successfully.');
-          });
-        });
-      });
-    });
-  });
-});
-}
-
-*/
 
 function getState(zipString) {
 
