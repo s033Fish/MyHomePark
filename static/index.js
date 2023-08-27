@@ -286,29 +286,13 @@ function newDrift() {
             }
          }
       }
-      // test code
-      formattedData = [];
-
-      for (let i = 0; i < data.results.length; i++) {
-        let plant = {
-           "plantID": data.results[i].id,
-           "name": data.results[i].data.commonnamex,
-           "color": data.results[i].data.color,
-           "height": data.results[i].data.hmax,
-        }
-        formattedData.push(plant);
-      }
-
-      yourPlantArray = formattedData;
-
-      // end test code
       printArray(plantArray);
       drawBoard(); // added to update the UI MTF
     })
     .catch(error => console.error('Error:', error));
   }
 
-
+    /*
     IDtoSet = 3;
     for (let i = 0; i < userwidth; i++) {     
       for (let j = 0; j < userlength; j++) {
@@ -316,6 +300,7 @@ function newDrift() {
           plantArray[i][j].plantID = IDtoSet;
       }
     }
+    */
   }
   updateLegend(); // trying to update the legend MTF
 }
