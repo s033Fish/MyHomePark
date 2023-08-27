@@ -130,7 +130,7 @@ def insert_image():
     for col in range(num_cols):
       plant_id = plant_array[row][col]
       if plant_id <= 0: # no plant
-        break
+        continue
       # create plant url from plant id
       image_url = 'https://storage.googleapis.com/myhomepark-images/' + str(plant_id) + '.png'
       image_id = str(plant_id) + '_image_' + str(random.randint(0, 1000000))
