@@ -144,7 +144,7 @@ function drawRectangle(event) {
     showPopup(arr_row, arr_col, event);
   } else if (groundSelect) {
     groundDrift(event);
-  } else if (plantSelect && plantArray[arr_row][arr_col].plantID >= 0){
+  } else if (plantSelect && plantArray[arr_row][arr_col] && plantArray[arr_row][arr_col].plantID >= 0){
     showPopup(arr_row, arr_col, event);
   } else {
     plantDrift(event);
@@ -509,7 +509,7 @@ document.getElementById("plantOptions").addEventListener("click", function (even
 
 function hidePopup() {
   const popup = document.getElementById("plantIdPopup");
-  // yourPlantArray = [];
+  yourPlantArray = [];
   popup.style.display = "none";
   popupVisible = false;
   printArray(plantArray);
@@ -522,8 +522,8 @@ function hidePopup() {
 
 
 function updateLegend() {
-  if (yourPlantArray.length === 0) {
-    console.log("The yourPlantArray is empty.");
+  if (plantArray.length === 0) {
+    console.log("PlantArray is empty.");
     return;
   }
 
