@@ -292,16 +292,17 @@ function newDrift() {
     .catch(error => console.error('Error:', error));
   }
 
-    /*
-    IDtoSet = 3;
-    for (let i = 0; i < userwidth; i++) {     
-      for (let j = 0; j < userlength; j++) {
-        if (plantArray[i][j].driftID == drID - 1) {
-          plantArray[i][j].plantID = IDtoSet;
+  /*
+  IDtoSet = 3;
+  for (let i = 0; i < userwidth; i++) {     
+    for (let j = 0; j < userlength; j++) {
+      if (plantArray[i][j].driftID == drID - 1) {
+        plantArray[i][j].plantID = IDtoSet;
       }
     }
-    */
   }
+  */
+
   updateLegend(); // trying to update the legend MTF
 }
 
