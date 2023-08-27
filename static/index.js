@@ -281,7 +281,7 @@ function newDrift() {
             }
          }
       }
-      printArray(plantArray);
+      // printArray(plantArray);
       drawBoard(); // added to update the UI 
     })
     .catch(error => console.error('Error:', error));
@@ -430,7 +430,7 @@ function showPopup(row, col, event) {
   plantOptionsDiv.innerHTML = "";
 
   if (plantSelect) { 
-     for (let i = 0; i < topTenRecs[clickedDriftID].length; i++) {
+      for (let i = 0; i < topTenRecs[clickedDriftID].length; i++) {
         let plant = {
            "plantID": topTenRecs[clickedDriftID][i].id,
            "name": topTenRecs[clickedDriftID][i].data.commonnamex,
@@ -441,17 +441,20 @@ function showPopup(row, col, event) {
         yourPlantArray.push(plant);
      }
 
-    for (const plant of yourPlantArray) {
-      const plantOption = document.createElement("div");
-      plantOption.classList.add("plant-option");
-      plantOption.setAttribute("data-plant-id", plant.plantID); // Set the plant ID
-      
-      const plantInfo = `Name: ${plant.name}, Color: ${plant.color}, Height: ${plant.height}`;
+     const displayLimit = Math.min(yourPlantArray.length, 10);
+     for (let i = 0; i < displayLimit; i++) {
+       const plant = yourPlantArray[i];
+       const plantOption = document.createElement("div");
+       plantOption.classList.add("plant-option");
+       plantOption.setAttribute("data-plant-id", plant.plantID); // Set the plant ID
 
+       const plantInfo = `Name: ${plant.name}, Color: ${plant.color}, Height: ${plant.height}`;
 
-      plantOption.textContent = plantInfo; // Set the plant name or other relevant data
-      plantOptionsDiv.appendChild(plantOption);
+       plantOption.textContent = plantInfo; // Set the plant name or other relevant data
+       plantOptionsDiv.appendChild(plantOption);
     }
+
+
   } else if (groundSelect) {
     console.log(groundSelect);
     for (const plant of gcArray) {
@@ -509,7 +512,7 @@ document.getElementById("plantOptions").addEventListener("click", function (even
 
 function hidePopup() {
   const popup = document.getElementById("plantIdPopup");
-  yourPlantArray = [];
+  //yourPlantArray = []; // commented out in order to keep data in the array
   popup.style.display = "none";
   popupVisible = false;
   printArray(plantArray);
@@ -559,6 +562,7 @@ function updateLegend() {
 
     const plantInfo = document.createElement("div");
     plantInfo.classList.add("plant-info");
+ 
     // Fetch plant name and other info based on plant ID (you might need to adjust this)
     const plantData = yourPlantArray.find(plant => plant.plantID === plantID);
     if (plantData) {
