@@ -6,6 +6,9 @@ var bh = 400;
 var p = 10;
 var topTenRecs = [];
 
+var RowForSearch = 0;
+var ColForSearch = 0;
+
 
 var state = getState(zipCode);
 console.log(state);
@@ -136,6 +139,8 @@ function drawRectangle(event) {
   var usery = event.clientY-20;
   var arr_row = Math.floor(usery / box);
   var arr_col = Math.floor(userx / box);
+  RowForSearch = arr_row;
+  ColForSearch = arr_col;
   if (plotSelect) {
     eliminateSquares(event);
   } else if (groundSelect && plantArray[arr_row][arr_col].driftID >= 0){
@@ -506,9 +511,12 @@ document.getElementById("plantOptions").addEventListener("click", function (even
 
 function hidePopup() {
   const popup = document.getElementById("plantIdPopup");
+  yourPlantArray = [];
   popup.style.display = "none";
   popupVisible = false;
   printArray(plantArray);
+  const searchBar = document.getElementById("plantSearch");
+  searchBar.value = "";
 }
 
 
@@ -895,8 +903,21 @@ function performPlantSearch(searchText) {
       hidePopup();
       yourPlantArray = [];
       */
-      yourPlantArray = data.results;
-      showPopup();
+      formattedData = [];
+
+      for (let i = 0; i < data.results.length; i++) {
+        let plant = {
+           "plantID": data.results[i].id,
+           "name": data.results[i].data.commonnamex,
+           "color": data.results[i].data.color,
+           "height": data.results[i].data.hmax,
+        }
+        formattedData.push(plant);
+      }
+
+      yourPlantArray = formattedData;
+
+      showPopup(RowForSearch, ColForSearch, null);
       console.log("changes");
     } else {
       searchError.textContent = "No matching plant found.";
@@ -925,7 +946,7 @@ document.getElementById("searchButton").addEventListener("click", function () {
 
 
 //#####ADD IN EXTRA PLANTS
-//CONSIDER ADDING A SEARCH IN CASE THEY ARE NOT 
+//#####CONSIDER ADDING A SEARCH IN CASE THEY ARE NOT 
 //#####Look into the algorithm because the same plants appear to be coming up
 //#####SUN shouldn't be able to be in the wrong one
 //#####Add a close button

@@ -13,29 +13,29 @@
       <h2>Customer Specifications</h2>
 
       <form id="myForm" action="/submit" method="POST">
-         <input type="checkbox" id="purple" name="purple" value="purple">
+         <input type="checkbox" id="purple" name="purple" value="purple" class="color">
          <label for="purple">purple</label><br>
-         <input type="checkbox" id="red" name="red" value="red">
+         <input type="checkbox" id="red" name="red" value="red" class="color">
          <label for="red">red</label><br>
-         <input type="checkbox" id="blue" name="blue" value="blue">
+         <input type="checkbox" id="blue" name="blue" value="blue" class="color">
          <label for="blue">blue</label><br>
-         <input type="checkbox" id="green" name="green" value="green">
+         <input type="checkbox" id="green" name="green" value="green" class="color">
          <label for="green">green</label><br>
-         <input type="checkbox" id="white" name="white" value="white">
+         <input type="checkbox" id="white" name="white" value="white" class="color">
          <label for="white">white</label><br>
-         <input type="checkbox" id="lavender" name="lavender" value="lavender">
+         <input type="checkbox" id="lavender" name="lavender" value="lavender" class="color">
          <label for="lavender">lavender</label><br>
-         <input type="checkbox" id="yellow" name="yellow" value="yellow">
+         <input type="checkbox" id="yellow" name="yellow" value="yellow" class="color">
          <label for="yellow">yellow</label><br>
-         <input type="checkbox" id="pink" name="pink" value="pink">
+         <input type="checkbox" id="pink" name="pink" value="pink" class="color">
          <label for="pink">pink</label><br>
-         <input type="checkbox" id="violet" name="violet" value="violet">
+         <input type="checkbox" id="violet" name="violet" value="violet" class="color">
          <label for="violet">violet</label><br>
-         <input type="checkbox" id="orange" name="orange" value="orange">
+         <input type="checkbox" id="orange" name="orange" value="orange" class="color">
          <label for="orange">orange</label><br>
-         <input type="checkbox" id="cream" name="cream" value="cream">
+         <input type="checkbox" id="cream" name="cream" value="cream" class="color">
          <label for="cream">cream</label><br>
-         <input type="checkbox" id="fusia" name="fusia" value="fusia">
+         <input type="checkbox" id="fusia" name="fusia" value="fusia" class="color">
          <label for="fusia">fusia</label><br>
 
          <p></p>
@@ -84,5 +84,59 @@
 
          <input type="submit" value="Submit">
       </form>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          const form = document.getElementById("myForm");
+          form.addEventListener("submit", function(event) {
+            const requiredFields = ["width", "length", "zipcode", "height"];
+            let hasError = false;
+            requiredFields.forEach(fieldId => {
+              const fieldValue = document.getElementById(fieldId).value;
+              if (!fieldValue) {
+                alert(`Please fill out the ${fieldId} field.`);
+                hasError = true;
+              }
+            });
+
+            if (hasError) {
+              event.preventDefault(); // Prevent form submission
+            }
+ 
+            if (document.getElementById("width").value > 24 || document.getElementById("length").value > 24 {
+              alert('The width and length must be less than 25');
+              event.preventDefault();
+            }
+
+            const colorCheckboxes = document.querySelectorAll('input[class="color"]');
+            let colorSelected = false;
+
+            colorCheckboxes.forEach(checkbox => {
+              if (checkbox.checked) {
+                colorSelected = true;
+              }
+            });
+
+            if (!colorSelected) {
+              alert("Please select at least one color.");
+              event.preventDefault(); // Prevent form submission
+            }
+          
+ 
+            const radioButtons = document.querySelectorAll('input[name="sunlight"]');
+            let radioButtonSelected = false;
+
+            radioButtons.forEach(radioButton => {
+              if (radioButton.checked) {
+                radioButtonSelected = true;
+              }
+            });
+
+            if (!radioButtonSelected) {
+              alert("Please select a sunlight option.");
+              event.preventDefault(); // Prevent form submission
+            }
+          });
+        });
+      </script>
   </body>
 </html>
