@@ -130,7 +130,6 @@ input[type="submit"]:hover {
     background-color: #5a8363; 
     border: none;
     border-radius: 15px; /* Adjust the value for more or less rounding */
-    cursor: pointer;
     transition: background-color 0.3s;
 }
 
